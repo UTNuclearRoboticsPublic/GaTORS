@@ -1,0 +1,3 @@
+.vscode/
+models/clouds/*.pcd
+models/meshes/facility.stl

@@ -1,0 +1,33 @@
+/gators/game_player:
+  ros__parameters:
+    gators:
+      paths:
+        pkg_path:                   /home/steven/workspace/research/nrg/gators/release/src/
+        clouds:
+          raw:
+            map:                    /gators/models/clouds/map.pcd
+            marked:                 /gators/models/clouds/marked.pcd
+          discretized:
+            map:                    /output/map_clusters.pcd
+            marked:                 /output/marked_clusters.pcd
+      board:
+        movement:
+          discretization:           3.0
+        repair:
+          discretization:           0.5
+        mesh_alpha:                 0.3 #0.3
+      party:
+        num_games:                  1
+        user_input_color:           false
+        use_color_for_player:       true
+        n_drones:                   1
+        n_quadrupeds:               1
+        n_gantries:                 1
+        starting_location:          12 # any negative number (ie. -1) will make starting locations be randomly assigned
+      mcts:
+        search_duration_ms:         5000 # ms
+        num_candidates:             100
+        search_depth:               10 # num party cycles to simulate ahead (p_start will play x times)
+        uct_c:                      10.0
+
+
