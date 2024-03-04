@@ -1,5 +1,7 @@
 # GaTORS: A Game-Theoretic Tool for Optimal Robot Selection and Design in Surface Coverage Applications
 
+[![github.io](https://img.shields.io/badge/github.io-MainPage-black.svg)](https://utnuclearroboticspublic.github.io/gators/)
+
 ![](images/i3.png)
 
 ## About
