@@ -2,20 +2,17 @@
   ros__parameters:
     gators:
       paths:
-        pkg_path:                   /home/steven/workspace/research/nrg/gators/release/src/
+        pkg_path:                   /home/steven/workspace/research/nrg/gators/release/src/gators
         clouds:
           raw:
-            map:                    /gators/models/clouds/map.pcd
-            marked:                 /gators/models/clouds/marked.pcd
-          discretized:
-            map:                    /output/map_clusters.pcd
-            marked:                 /output/marked_clusters.pcd
+            map:                    /models/clouds/map.pcd
+            marked:                 /models/clouds/marked.pcd
       board:
         movement:
           discretization:           3.0
         repair:
           discretization:           0.5
-        mesh_alpha:                 0.3 #0.3
+        mesh_alpha:                 0.3
       party:
         num_games:                  1
         user_input_color:           false
