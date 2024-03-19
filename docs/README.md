@@ -3,7 +3,8 @@
 #### Steven Swanbeck, Daniel Meza, Jared Rosenbaum, David Fridovich-Keil, and Mitch Pryor
 
 ## Submitted to IROS 2024
-<!-- --- -->
+
+{% include youtube.html id="GM4DKKhbErg" %}
 
 ### About
 As the number of commercially-available robots
@@ -35,39 +36,23 @@ flexibility, GaTORS can be easily adapted to provide similar
 insights for other types of robots in different environments and
 surface coverage applications.
 
-
-<!-- ### Citation
-```
-@inproceedings{regalswanbeckARSTARAugmentedReality2024,
-  title = {AR-STAR: An Augmented Reality Tool for Online Modification of Robot Point Cloud Data},
-  author = {Regal, Frank and Swanbeck, Steven and Parra, Fabian and Pryor, Mitch},
-  booktitle = {HRI '24 Companion},
-  eventtitle = {ACM/IEEE International Conference on Human-Robot Interaction (HRI)},
-  publisher = {ACM},
-  isbn = {979-8-4007-0323-2/24/03},
-  doi = {10.1145/3610978.3640571},
-  year = {2024},
-  location = {Boulder, CO}
-}
-``` -->
-
 ### Methods
 GaTORS frames the problem of multi-robot task allocation as a collaborative game parameterized by environment and robot-specific constraints. It is designed to be flexible, allowing custom environments and robots to be implemented to provide robot selection and design guidance based on simulation results in specific environments.
 
 As an example, GaTORS is used to inform robot selection and design choices for peroforming surface coverage for repair of corroded material in an industrial refinery. Material to be colored is marked in pink.
 
-![Map](/assets/map.png)
+![Map](/docs/assets/map.png)
 
 Heterogeneous teams of drone, quadruped, and gantry systems are evaluated for collaboratively completing the repair task.
 
-![Full](/assets/full.svg)
+![Full](/docs/assets/full.svg)
 
 Based on simulation results, team compositions capable of completing the task under reasonable time and cost considerations are suggested.
 
-![TeamComposition](/assets/team_composition.svg)
+![TeamComposition](/docs/assets/team_composition.svg)
 
 Simulation results suggest the drone system is weaker than both the quadruped and gantry systems for this task, so GaTORS is used to perform a parameter sweep over possible drone configurations to set peroformance targtes that would make it competitive.
 
-![RobotDesign](/assets/drone_design.svg)
+![RobotDesign](/docs/assets/drone_design.svg)
 
 For details, readers are referred to the paper.
