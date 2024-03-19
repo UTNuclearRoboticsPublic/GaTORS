@@ -41,18 +41,18 @@ GaTORS frames the problem of multi-robot task allocation as a collaborative game
 
 As an example, GaTORS is used to inform robot selection and design choices for peroforming surface coverage for repair of corroded material in an industrial refinery. Material to be colored is marked in pink.
 
-![Map](/docs/assets/map.png)
+![Map](/assets/map.png)
 
 Heterogeneous teams of drone, quadruped, and gantry systems are evaluated for collaboratively completing the repair task.
 
-![Full](/docs/assets/full.svg)
+![Full](/assets/full.svg)
 
 Based on simulation results, team compositions capable of completing the task under reasonable time and cost considerations are suggested.
 
-![TeamComposition](/docs/assets/team_composition.svg)
+![TeamComposition](/assets/team_composition.svg)
 
 Simulation results suggest the drone system is weaker than both the quadruped and gantry systems for this task, so GaTORS is used to perform a parameter sweep over possible drone configurations to set peroformance targtes that would make it competitive.
 
-![RobotDesign](/docs/assets/drone_design.svg)
+![RobotDesign](/assets/drone_design.svg)
 
 For details, readers are referred to the paper.

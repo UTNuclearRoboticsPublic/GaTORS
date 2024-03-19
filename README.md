@@ -2,7 +2,7 @@
 
 [![github.io](https://img.shields.io/badge/github.io-MainPage-black.svg)](https://utnuclearroboticspublic.github.io/gators/)
 
-![](images/i3.png)
+![](docs/assets/cover.png)
 
 ## About
 As the number of commercially-available robots
@@ -84,9 +84,9 @@ ros2 service call /gators/game_player/play_game std_srvs/srv/Trigger
 in a separate terminal to simulate the full game.
 
 
-[](https://github.com/steven-swanbeck/game_theoretic_painting/assets/99771915/644db458-211a-4ba5-9886-ede0299eddec)
+<!-- [](https://github.com/steven-swanbeck/game_theoretic_painting/assets/99771915/644db458-211a-4ba5-9886-ede0299eddec) -->
 
-![](images/game_simulation.mp4)
+<!-- ![](images/game_simulation.mp4) -->
 
 ## Customizing to Fit Your Applications
 GaTORS was orignally designed for providing robot design and selection insights for surface coverage problems. As such, the parameterization used for the game and robots is tailored to coverage-relevant parameters. GaTORS' ```Robot``` class is located in ```src/agents.cpp```, and parameters for the ```Drone```, ```Quadruped```, and ```Gantry``` robots used in the original paper can be adjusted inside ```include/gators/agents.hpp```. 
@@ -102,16 +102,3 @@ To support new robot types or extend GaTORS to applications significantly differ
 
 5. If visualization is desired, add a mesh file for your custom environment or robot to the ```models/meshes/``` folder.
 
-## Additional Info
-
-Currently supported robot types are drones, quadrupeds, and gantries.
-
-![](images/i4.png)
-
-The game board is built using input point clouds that represent the map of the environment and the material within it that must be repaired.
-
-![](images/i5.png)
-
-The robots play on this board until all material in the environment has been repaired.
-
-![](images/i1.png)
