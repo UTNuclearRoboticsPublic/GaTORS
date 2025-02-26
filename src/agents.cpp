@@ -4,19 +4,12 @@ namespace agents
 {
 
 Robot::Robot(std::string handle, int type_enum, bool reach_upper, int max_movement, int max_coverage, int battery_life, int recharge_duration)
+: id(handle), type(type_enum), can_reach_upper(reach_upper), max_turn_movement(max_movement), max_turn_coverage(max_coverage), max_battery_life(battery_life), recharge_time(recharge_duration), score{0}
 {
-    id = handle;
-    type = type_enum;
-    can_reach_upper = reach_upper;
-    max_turn_movement = max_movement;
-    max_turn_coverage = max_coverage;
-    max_battery_life = battery_life;
     remaining_movement = max_movement;
     remaining_coverage = max_coverage;
     remaining_battery = battery_life;
-    recharge_time = recharge_duration;
     remaining_charge_time = recharge_time;
-    score = 0;
 }
 
 int Robot::get_max_turn_movement() {return max_turn_movement;}

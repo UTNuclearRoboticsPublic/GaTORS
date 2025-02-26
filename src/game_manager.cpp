@@ -39,12 +39,12 @@ void GameManager::instantiatePlayers (const int &num_drones, const int &num_quad
     player_turn_ = 0;
     total_turns_ = 0;
     if (starting_position < 0) {
-        // - enumerate possible options
+        // enumerate possible options
         std::vector<int> viable_starting_locations;
         for (auto it : board_.movement_spaces) {
             viable_starting_locations.push_back(it.first);
         }
-        // - randomly assign one to each of them
+        // randomly assign one to each of them
         std::random_device rd;
         std::mt19937 rng(rd());
         std::uniform_int_distribution<> distr(0, viable_starting_locations.size() - 1);
@@ -70,11 +70,11 @@ void GameManager::generateTurnOrder ()
 
 std::string GameManager::startNext () 
 {
-    // - reset turn values
+    // reset turn values
     party_.players.at(playingNow()).reset_remaining_movement();
     party_.players.at(playingNow()).reset_remaining_coverage();
 
-    // - increment turn
+    // increment turn
     player_turn_++;
     if (player_turn_ > (int)(party_.playing_order.size() - 1)) {
         player_turn_ = 0;
@@ -133,14 +133,14 @@ void GameManager::playToDepth (const int &depth)
 
 void GameManager::takeRandomTurn ()
 {
-    // - enforce battery limitations
+    // enforce battery limitations
     if (hasSufficientBattery()) {
-        // - sample and play a random turn
+        // sample and play a random turn
         const int num_candidates {10};
         playRandomMove(generateRandomTurns(num_candidates));
     }
 
-    // - reset turn-based decaying values
+    // reset turn-based decaying values
     party_.players.at(playingNow()).reset_remaining_movement();
     party_.players.at(playingNow()).reset_remaining_coverage();
     if (log_level_) {
@@ -151,14 +151,15 @@ void GameManager::takeRandomTurn ()
         std::cout << "\t\tbattery: " << party_.players.at(playingNow()).remaining_battery << std::endl;
         std::cout << "\t\tcharge: " << party_.players.at(playingNow()).remaining_charge_time << std::endl;
     }
-    // - start the next player's turn
+
+    // start the next player's turn
     startNext();
 }
 
 void GameManager::playRandomMove (TurnOptions candidates)
 {
     if (candidates.size() > 0) {
-        // - randomly pick a possilbe turn
+        // randomly pick a possible turn
         std::random_device dev;
         std::mt19937 rng(dev());
         std::uniform_int_distribution<std::mt19937::result_type> dist(0, candidates.size() - 1);
@@ -168,15 +169,15 @@ void GameManager::playRandomMove (TurnOptions candidates)
 
 void GameManager::playSequence (TurnSequence &sequence)
 {
-    // - play the sequence, updating the global board and party accordingly
+    // play the sequence, updating the global board and party accordingly
     while (!sequence.empty()) {
         Action action {sequence.front()};
         if (action.move_id != -1) {
-            // - handle movements
+            // handle movements
             party_.players.at(playingNow()).update_location(action.move_id);
             if (log_level_) {std::cout << "\t\tRobot moved to move node " << action.move_id << std::endl;}
         } else {
-            // - handle repairs and add to score
+            // handle repairs and add to score
             board_.repair_spaces.at(action.repair_id).covered = true;
             party_.players.at(playingNow()).update_score(1);
             if (log_level_) {std::cout << "\t\tRobot repaired repair node " << action.repair_id << std::endl;}
@@ -220,11 +221,6 @@ TurnOptions GameManager::generateRandomTurns (const int num_moves)
     return possible_turns;
 }
 
-// TurnOptions GameManager::enumerateTurns (const int num_moves)
-// {
-//     // TODO
-// }
-
 TurnSequence GameManager::generateRandomTurn ()
 {
     TurnSequence possible_turn;
@@ -232,29 +228,27 @@ TurnSequence GameManager::generateRandomTurn ()
     std::random_device dev;
     std::mt19937 rng(dev());
 
-    // // - for current player, get starting state
-    // int state {party_.players.at(playingNow()).get_location()};
     bool reached_terminal_state {false};
 
-    // - add to move until turn reaches a terminal state
+    // add to move until turn reaches a terminal state
     agents::Robot player {party_.players.at(playingNow())};
     RepairBoard board {board_.repair_spaces};
 
     while (!reached_terminal_state) {
         MoveOptions candidates {listMovesfromNodeConstrained(player, board)};
 
-        // - return if we are at a terminal state
+        // return if at a terminal state
         if (candidates.size() < 1) {
             reached_terminal_state = true;
         } else {
-            // - randomly sample one of these
+            // randomly sample one of these
             std::uniform_int_distribution<std::mt19937::result_type> dist(0, candidates.size() - 1);
             Action move = candidates[dist(rng)];
 
-            // - add it to the TurnSequence and update state variable
+            // add it to the TurnSequence and update state variable
             possible_turn.push(move);
 
-            // - simulate robot taking that action
+            // simulate robot taking that action
             if (move.move_id != -1) {
                 player.remaining_movement -= 1;
                 player.update_location(move.move_id);
@@ -275,18 +269,15 @@ MoveOptions GameManager::listMovesfromNodeConstrained (agents::Robot &player, Re
     if ((player.remaining_movement > 0) && (player.remaining_coverage == player.get_max_turn_coverage())) {
         std::vector<int> movement_edges;
         switch (player.get_type()) {
-            case 0: // drone
-            {
+            case 0: { // drone
                 movement_edges = board_.movement_spaces.at(player.get_location()).drone_edges;
                 break;
             }
-            case 1: // quadruped
-            {
+            case 1: { // quadruped
                 movement_edges = board_.movement_spaces.at(player.get_location()).quadruped_edges;
                 break;
             }
-            case 2: // gantry
-            {
+            case 2: { // gantry
                 movement_edges = board_.movement_spaces.at(player.get_location()).gantry_edges;
                 break;
             }
@@ -327,31 +318,28 @@ MoveOptions GameManager::listMovesfromNode (const int &index)
 {
     MoveOptions candidates;
 
-    // - create a move for all movement options and repair options
+    // create a move for all movement options and repair options
     std::vector<int> movement_edges;
     std::vector<int> repair_edges {board_.movement_spaces.at(index).repair_edges};
 
     if (party_.players.at(playingNow()).get_type() == 2) { // if gantry
         if (board_.movement_spaces.at(index).neighbors.z_pos != -1) {
-            // - add these edges
+            // add these edges
             std::vector<int> high_repair_edges {board_.movement_spaces.at(board_.movement_spaces.at(index).neighbors.z_pos).repair_edges};
             repair_edges.insert(repair_edges.end(), high_repair_edges.begin(), high_repair_edges.end());
         }
     }
 
     switch (party_.players.at(playingNow()).get_type()) {
-        case 0: // drone
-        {
+        case 0: { // drone
             movement_edges = board_.movement_spaces.at(index).drone_edges;
             break;
         }
-        case 1: // quadruped
-        {
+        case 1: { // quadruped
             movement_edges = board_.movement_spaces.at(index).quadruped_edges;
             break;
         }
-        case 2: // gantry
-        {
+        case 2: { // gantry
             movement_edges = board_.movement_spaces.at(index).gantry_edges;
             break;
         }

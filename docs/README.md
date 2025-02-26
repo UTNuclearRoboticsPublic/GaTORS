@@ -2,8 +2,6 @@
 
 #### Steven Swanbeck, Daniel Meza, Jared Rosenbaum, David Fridovich-Keil, and Mitch Pryor
 
-## Submitted to IROS 2024
-
 {% include youtube.html id="GM4DKKhbErg" %}
 
 ### About
