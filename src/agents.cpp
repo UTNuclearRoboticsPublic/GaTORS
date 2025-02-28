@@ -29,9 +29,9 @@ void Robot::reset_score () {score = 0;}
 void Robot::update_location (int index) {location = index;}
 void Robot::update_score (int update) {score += update;}
 
-Drone::Drone(std::string handle) : Robot(handle, 0, true, 10, 2, 2, 3) {}
-Quadruped::Quadruped(std::string handle) : Robot(handle, 1, false, 4, 3, 6, 12) {}
-Gantry::Gantry(std::string handle) : Robot(handle, 2, true, 20, 100, 1, 9) {}
+Drone::Drone(std::string handle) : Robot(handle, 0, true, 24, 2, 1, 18) {}
+Quadruped::Quadruped(std::string handle) : Robot(handle, 1, false, 6, 3, 9, 12) {}
+Gantry::Gantry(std::string handle) : Robot(handle, 2, true, 33, 50, 1, 12) {}
 
 void randomShufflePlayingOrder (agents::Party &party)
 {

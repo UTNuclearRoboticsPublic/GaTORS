@@ -2,7 +2,7 @@
 
 [![github.io](https://img.shields.io/badge/github.io-MainPage-black.svg)](https://utnuclearroboticspublic.github.io/gators/)
 
-![](docs/assets/cover.png)
+![](docs/assets/full.svg)
 
 ## About
 As the number of commercially-available robots
@@ -35,7 +35,7 @@ insights for other types of robots in different environments and
 surface coverage applications.
 
 ## Contents
-**gators** is a ROS2-based package. However, ROS is only neccessary for visualization; all game mechanics and execution are pure C++ that can be used independently.  
+**GaTORS** is a ROS2-based package. However, ROS is only neccessary for visualization; all game mechanics and execution are pure C++ that can be used independently.  
 
 ## Requirements, Dependencies, and Building
 GaTORS is built and tested on a system running ROS2 Humble on Ubuntu 22.04. However, the project is written entirely in C++ and wrapped in a thin ROS wrapper for visualization purposes, so it can easily be compiled and run independently of ROS, just without the shown visualizations. 

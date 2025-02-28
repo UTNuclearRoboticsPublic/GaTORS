@@ -60,9 +60,6 @@ private:
 class Drone : public Robot
 {
 public:
-    // Drone(std::string handle) : Robot(handle, 0, true, 10, 2, 3, 2) {}
-    // Drone(std::string handle) : Robot(handle, 0, true, 10, 2, 3, 1) {}
-    // Drone(std::string handle) : Robot(handle, 0, true, 10, 2, 3, 10) {}
     Drone(std::string handle);
 };
 
@@ -72,9 +69,6 @@ public:
 class Quadruped : public Robot
 {
 public:
-    // Quadruped(std::string handle) : Robot(handle, 1, false, 3, 2, 8, 2) {}
-    // Quadruped(std::string handle) : Robot(handle, 1, false, 3, 5, 8, 2) {}
-    // Quadruped(std::string handle) : Robot(handle, 1, false, 4, 4, 20, 40) {}
     Quadruped(std::string handle);
 };
 
@@ -84,9 +78,6 @@ public:
 class Gantry : public Robot
 {
 public:
-    // Gantry(std::string handle) : Robot(handle, 2, true, 1, 5, 30, 2) {}
-    // Gantry(std::string handle) : Robot(handle, 2, true, 10, 30, 1, 9) {}
-    // Gantry(std::string handle) : Robot(handle, 2, true, 100, 100, 1, 20) {}
     Gantry(std::string handle);
 };
 
